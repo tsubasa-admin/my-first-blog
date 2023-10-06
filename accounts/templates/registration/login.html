@@ -1,0 +1,28 @@
+{% extends 'nodolist/base.html' %}
+
+{% block content %}
+<div class="container text-center" style="-webkit-user-select: auto;">
+  <h1 class="text-center">ログイン</h1>
+  {% for error in form.error.values %}
+  {{ error }}
+  {% endfor %}
+<form style="-webkit-user-select: auto;" method="post">
+  {% csrf_token %}
+    <div class="row mb-3" style="-webkit-user-select: auto;">
+      <label class="col-sm-2 col-form-label" style="-webkit-user-select: auto;">Username</label>
+      <div class="col-sm-10" style="-webkit-user-select: auto;">
+        <input type="username" class="form-control" name="username" style="-webkit-user-select: auto;">
+      </div>
+    </div>
+    <div class="row mb-3" style="-webkit-user-select: auto;">
+      <label class="col-sm-2 col-form-label" style="-webkit-user-select: auto;">Password</label>
+      <div class="col-sm-10" style="-webkit-user-select: auto;">
+        <input type="password" class="form-control" name="password" style="-webkit-user-select: auto;">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark" style="-webkit-user-select: auto;">ログイン</button>
+  </form>
+</div>
+{% endblock content %}
+
+{% comment %} 127.0.0.1:8000/accounts/login/ {% endcomment %}

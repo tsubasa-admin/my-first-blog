@@ -1,0 +1,7 @@
+{% extends 'nodolist/base.html' %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="submit" value="削除する" />
+  </form>
+{% endblock %}

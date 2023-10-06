@@ -1,0 +1,11 @@
+{% extends 'nodolist/base.html' %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="text" name="new_tag" class="form-control" placeholder="新規タグを追加する" />
+    <input type="hidden" name="created_user" value="{{ user.id }}"/>
+
+    <input type="submit" value="送信する" />
+  </form>
+{% endblock %}

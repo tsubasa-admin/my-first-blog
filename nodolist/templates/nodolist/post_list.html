@@ -1,0 +1,35 @@
+{% extends 'nodolist/base.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container-fruid mb-3">
+  {% if not posts %}
+<h2 class="p-3 text-white text-center bg-dark" style="-webkit-user-select: auto;">最初のやらないことリストを追加しましょう。</h2>
+{% else %}
+<h2 class="p-3 text-white text-center bg-dark" style="-webkit-user-select: auto;">全てのタスクをこなせば、{{ total }}分の時間が生まれます！</h2>
+</div>
+{% endif %}
+{% endif %}
+  <div class="container mt-3" style="-webkit-user-select: auto;">
+    <div class="row row-cols-3" style="-webkit-user-select: auto;">
+        {% for post in posts %}
+      <div class="col" style="-webkit-user-select: auto;">
+        <div class="card" style="-webkit-user-select: auto;">
+            <div class="card-header" style="-webkit-user-select: auto;">{{ post.tasks }}</div>
+            <div class="card-body" style="-webkit-user-select: auto;">
+              <p class="card-text" style="-webkit-user-select: auto;">{{ post.text }}</p>
+              <p class="card-text" style="-webkit-user-select: auto;">時間:{{ post.complete_time }}分</p>
+              {% comment %} <a href="{% url "nodolist:post_detail" post.pk %}" class="btn btn-dark" style="-webkit-user-select: auto;">詳細 »</a> {% endcomment %}
+              <a href="{% url "nodolist:post_update" post.pk %}" class="btn btn-dark" style="-webkit-user-select: auto;">更新 »</a>
+              <a href="{% url "nodolist:post_delete" post.pk %}" class="btn btn-dark" style="-webkit-user-select: auto;">削除 »</a>
+              {% comment %} <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="完了" class="text-light" />
+              </form> {% endcomment %}
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

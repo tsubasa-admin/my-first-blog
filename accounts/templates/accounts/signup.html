@@ -1,0 +1,31 @@
+{% extends 'nodolist/base.html' %}
+{% block content %}
+{% for error in form.error.values %}
+{{ error }}
+{% endfor %}
+<div class="container-fruid  text-center m-4 p-4 max-width: 400px; bg-light border border-dark rounded" style="-webkit-user-select: auto;">
+    <h1 class="text-center">サインアップ</h1>
+<form style="-webkit-user-select: auto;" method="post">
+{% csrf_token %}
+  <div class="row mb-3" style="-webkit-user-select: auto;">
+    <label class="col-sm-2 col-form-label" style="-webkit-user-select: auto;">ユーザー名</label>
+    <div class="col-sm-10" style="-webkit-user-select: auto;">
+      <input type="username" class="form-control" name="username" style="-webkit-user-select: auto;">
+    </div>
+  </div>
+  <div class="row mb-3" style="-webkit-user-select: auto;">
+    <label class="col-sm-2 col-form-label" style="-webkit-user-select: auto;">パスワード1</label>
+    <div class="col-sm-10" style="-webkit-user-select: auto;">
+      <input type="password1" class="form-control" name="password1" style="-webkit-user-select: auto;">
+    </div>
+  </div>
+  <div class="row mb-3" style="-webkit-user-select: auto;">
+    <label class="col-sm-2 col-form-label" style="-webkit-user-select: auto;">パスワード2</label>
+    <div class="col-sm-10" style="-webkit-user-select: auto;">
+      <input type="password2" class="form-control" name="password2" style="-webkit-user-select: auto;">
+    </div>
+</div>
+  <button type="submit" class="btn btn-dark mt-3" style="-webkit-user-select: auto;">サインアップ</button>
+</form>
+</div>
+{% endblock content %}

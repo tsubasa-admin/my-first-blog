@@ -1,0 +1,32 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark" style="-webkit-user-select: auto;">
+    <div class="container-fluid" style="-webkit-user-select: auto;">
+
+            <ul class="navbar-nav mb-2 mb-xl-0 text-right" style="-webkit-user-select: auto; margin-left: auto;">
+            {% if request.user.is_authenticated %}
+            <li>
+                <a class="nav-link active" aria-current="page" href="{% url "accounts:logout" %}" style="-webkit-user-select: auto;">ログアウト</a>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-link active" aria-current="page" href="{% url "accounts:login" %}" style="-webkit-user-select: auto;">ログイン</a>
+            </li>
+            <li>
+                <a class="nav-link active" aria-current="page" href="{% url "accounts:signup" %}" style="-webkit-user-select: auto;">サインアップ</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="card bg-dark text-dark" style="-webkit-user-select: auto;">
+    <img src="{{ image.img.url }}" class="card-img" alt="card-img-overlay" style="-webkit-user-select: auto; max-width: 100%; height: auto; background-color: blue; opacity: 0.4;" />
+  <div class="card-img-overlay" style="-webkit-user-select: auto;">
+    <h1 class="card-title text-light" style="-webkit-user-select: auto; display: flex; align-items: center; justify-content: center; height: 10em;">Nodolistへようこそ</h1>
+    <h4 class="card-title text-light" style="-webkit-user-select: auto; display: flex; align-items: center; justify-content: center; height: 10em;">Nodolistでは、忙しいあなたが時間を作り出すお手伝いをします。</h4>    
+  </div>
+</div>
+
+
